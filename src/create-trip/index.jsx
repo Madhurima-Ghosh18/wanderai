@@ -4,11 +4,9 @@ import { doc, setDoc } from 'firebase/firestore';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { toast } from 'sonner';
-//import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import OlaPlacesAutocomplete from './OlaPlacesAutocomplete';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -33,7 +31,7 @@ function CreateTrip() {
   const handleInputChange = (name, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'location' ? { label: value.description, place_id: value.place_id } : value
+      [name]: name === 'location' ? { label: value.value.description, place_id: value.value.place_id } : value
     }));
   };
 
@@ -104,6 +102,9 @@ function CreateTrip() {
 
   const SaveAiTrip = async (TripData) => {
     try {
+      console.log("Trip Data:", TripData);
+      console.log("User Data:", localStorage.getItem('user'));
+      console.log("Form Data:", formData);
       const user = JSON.parse(localStorage.getItem('user'));
       const docId = Date.now().toString();
 
@@ -129,10 +130,10 @@ function CreateTrip() {
       <div className='mt-20 flex flex-col gap-10'>
       <div>
   <h2 className='text-xl my-3 font-medium'>What is your destination of choice?📍</h2>
-  <OlaPlacesAutocomplete
-    apiKey={import.meta.env.VITE_OLA_MAPS_API_KEY}
-    onPlaceSelect={(place) => handleInputChange('location', place)}
-  />
+  <GooglePlacesAutocomplete apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY} selectProps={{
+    place,
+    onChange:(place)=> {setPlace(place);handleInputChange('location', place);console.log("PLace",place);},
+  }}/>
 </div>
 
         <div>

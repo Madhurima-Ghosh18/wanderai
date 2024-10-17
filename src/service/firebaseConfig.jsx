@@ -7,7 +7,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC6OtYJoBLctZyut8YdEYc53cQ1I0YBN0Y",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "ai-trip-planner-a276c.firebaseapp.com",
   projectId: "ai-trip-planner-a276c",
   storageBucket: "ai-trip-planner-a276c.appspot.com",

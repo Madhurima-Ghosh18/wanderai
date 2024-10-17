@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import InfoSection from '../components/InfoSection';
 import Hotels from '../components/Hotels';
 import PlacesToVisit from '../components/PlacesToVisit';
-import Footer from '../components/Footer';
+
 
 function Viewtrip() {
 
@@ -15,7 +15,11 @@ function Viewtrip() {
     useEffect(()=>{
         tripId&&GetTripData();
     },[tripId])
-
+    useEffect(() => {
+        if (trip) {
+          console.log("Trip Data:", JSON.stringify(trip, null, 2));
+        }
+      }, [trip]);
     /**
      * Used to get Trip Information from Firebase
      */
@@ -34,17 +38,25 @@ function Viewtrip() {
     }
 
   return (
-    <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
-        {/* Information Section  */}
-            <InfoSection trip={trip} />
-        {/* Recommended Hotels  */}
-            <Hotels trip={trip} />
-        {/* Daily Plan  */}
-            <PlacesToVisit trip={trip} />
-        {/* Footer  */}
-            <Footer trip={trip} />
+    <div className="p-10 md:px-20 lg:px-44 xl:px-56">
+    <div className="space-y-8">
+      {/* Information Section */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <InfoSection trip={trip} />
+      </div>
+
+      {/* Hotel Recommendations */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <Hotels trip={trip} />
+      </div>
+
+      {/* Places to Visit */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <PlacesToVisit trip={trip} />
+      </div>
     </div>
-  )
+  </div>
+);
 }
 
 export default Viewtrip

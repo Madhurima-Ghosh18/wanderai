@@ -5,8 +5,8 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
 function PlaceCardItem({place}) {
-
   const [photoUrl,setPhotoUrl]=useState();
+
   useEffect(()=>{
     place&&GetPlacePhoto();
   },[place])
@@ -23,19 +23,24 @@ function PlaceCardItem({place}) {
 
   return (
     <Link to={'https://www.google.com/maps/search/?api=1&query='+place.placeName} target='_blank'>
-        <div className='border rounded-xl p-3 mt-2 flex gap-5 
-        hover:scale-105 transition-all hover:shadow-md cursor-pointer'>
-            <img src={photoUrl?photoUrl:'/placeholder.jpg'}
-            className='w-[130px] h-[130px] rounded-xl object-cover'
-            />
-            <div>
-                <h2 className='font-bold text-lg'>{place.placeName}</h2>
-                <p className='text-sm text-gray-400'>{place.placeDetails}</p>
-                <h2 className='mt-2'>🕙 {place.timeToTravel}</h2>
-                <h2 className='mt-2'>🎟️ {place.ticketPricing}</h2>
-                {/* <Button size="sm"><FaMapLocationDot /></Button> */}
-            </div>
+      <div className='bg-white border border-gray-200 rounded-xl p-4 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow-lg cursor-pointer'>
+        <img 
+          src={photoUrl?photoUrl:'/place.jpg'}
+          className='w-[130px] h-[130px] rounded-xl object-cover'
+          alt={place.placeName}
+        />
+        <div className='flex flex-col justify-between flex-grow'>
+          <div>
+            <h2 className='font-bold text-lg text-gray-800'>{place.placeName}</h2>
+            <p className='text-sm text-gray-600'><b>📍 {place.placeAddress}</b></p>
+            <p className='text-sm text-gray-500 mt-3'>{place.placeDetails}</p>
+          </div>
+          <div className='mt-2'>
+            <p className='font-medium text-indigo-600'>🕙 {place.timeToTravel}</p>
+            <p className='font-medium text-green-600 mt-1'>🎟️ {place.ticketPricing}</p>
+          </div>
         </div>
+      </div>
     </Link>
   )
 }
