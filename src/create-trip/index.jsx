@@ -131,14 +131,14 @@ function CreateTrip() {
       <div className='mt-20 flex flex-col gap-10'>
       <div>
   <h2 className='text-xl my-3 font-medium'>What is your destination of choice?📍</h2>
-   <GooglePlacesAutocomplete apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY} selectProps={{
+    <GooglePlacesAutocomplete apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY} selectProps={{
     place,
     onChange:(place)=> {setPlace(place);handleInputChange('location', place);console.log("Place",place);},
   }}/>
 </div>
 
         <div>
-          <h2 className='text-xl my-3 font-medium'>How many days are you planning your trip?</h2>
+          <h2 className='text-xl my-3 font-medium'>How many days are you planning your trip?📆</h2>
           <Input 
             placeholder='Ex. 3' 
             type="number"
@@ -147,17 +147,17 @@ function CreateTrip() {
         </div>
 
         <div>
-          <h2 className='text-xl my-3 font-medium'>What's Your Budget?</h2>
+          <h2 className='text-xl my-3 font-medium'>What's Your Budget?🫰</h2>
           <div className='grid grid-cols-3 gap-5 mt-5'>
             {SelectBudgetOptions.map((item, index) => (
               <div key={index}
                 onClick={() => handleInputChange('budget', item.title)}
                 className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg
-                ${formData.budget === item.title ? 'shadow-lg border-black' : ''}`}
+                ${formData.budget === item.title ? 'shadow-lg border-brown-600' : ''}`}
               >
                 <h2 className='text-4xl'>{item.icon}</h2>
-                <h2 className='font-bold text-lg'>{item.title}</h2>
-                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
+                <h2 className='font-bold text-lg text-orange-500'>{item.title}</h2>
+                <h2 className='text-sm text-black'>{item.desc}</h2>
               </div>
             ))}
           </div>
@@ -170,11 +170,11 @@ function CreateTrip() {
               <div key={index}
                 onClick={() => handleInputChange('traveler', item.people)}
                 className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg
-                ${formData.traveler === item.people ? 'shadow-lg border-black' : ''}`}
+                ${formData.traveler === item.people ? 'shadow-lg border-brown-600' : ''}`}
               >
                 <h2 className='text-4xl'>{item.icon}</h2>
-                <h2 className='font-bold text-lg'>{item.title}</h2>
-                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
+                <h2 className='font-bold text-lg text-orange-500'>{item.title}</h2>
+                <h2 className='text-sm text-black'>{item.desc}</h2>
               </div>
             ))}
           </div>
