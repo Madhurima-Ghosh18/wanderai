@@ -14,7 +14,7 @@ function PlacesToVisit({trip}) {
                 {item.plan.map((place, placeIndex) => (
                   <div key={placeIndex} className='bg-white p-4 rounded-lg shadow-md'>
                     <h2 className='font-medium text-sm mb-2'>
-                      <span className='text-gray-700'>Best Time:</span> <span className='text-orange-600 font-semibold'>{place.bestTime}</span>
+                      <span className='text-gray-700'>Best Time:</span> <span className='text-orange-600 font-semibold'>{place.timeTravel}</span>
                     </h2>
                     <PlaceCardItem place={place} />
                   </div>
