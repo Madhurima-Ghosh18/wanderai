@@ -2,7 +2,7 @@ import React from 'react';
 import HotelCardItem from './HotelCardItem';
 
 function Hotels({ trip }) {
-  const hotelOptions = trip?.tripData?.hotelOptions || [];
+  const hotelOptions = trip?.tripData?.hotels || [];
 
   // Determine the grid class based on the number of hotels
   const getGridClass = () => {
