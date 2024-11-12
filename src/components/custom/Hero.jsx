@@ -15,7 +15,7 @@ function Hero() {
       </Link>
       <div className='w-full flex justify-center p-4'>
         <img 
-          src='/landing.jpg' 
+          src='/landing.png' 
           className='w-full max-w-[1000px] h-auto object-cover rounded-lg shadow-lg'
           alt="Landing image showcasing travel destinations"
         />
