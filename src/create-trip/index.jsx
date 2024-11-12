@@ -68,7 +68,7 @@ function CreateTrip() {
   const OnGenerateTrip = async () => {
 
     if(formData.noOfDays>5){
-      toast.error("Please enter Trip Days less than 5.");
+      toast.error("Please enter Trip Days less than 6.");
       return;
     }
     const user = localStorage.getItem('user');
