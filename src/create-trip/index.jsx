@@ -105,28 +105,31 @@ function CreateTrip() {
       setLoading(false);
     }
   };
+  
 
   const SaveAiTrip = async (TripData) => {
+    const tripData = JSON.parse(TripData); // Parse the string into a valid object.
     try {
-      console.log("Trip Data:", TripData);
-      console.log("User Data:", localStorage.getItem('user'));
-      console.log("Form Data:", formData);
+      const parsedTripData = JSON.parse(TripData);  // Ensure this is a valid object
+      console.log("Parsed Trip Data:", parsedTripData);
+  
       const user = JSON.parse(localStorage.getItem('user'));
       const docId = Date.now().toString();
-
+  
       await setDoc(doc(db, "AITrips", docId), {
         userSelection: formData,
-        tripData: JSON.parse(TripData),
+        tripData: parsedTripData,  // Use the parsed object here
         userEmail: user?.email,
         id: docId
       });
-
+  
       navigate('/view-trip/' + docId);
     } catch (error) {
       console.error("Error saving trip:", error);
       toast.error("Failed to save trip");
     }
   };
+  
 
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10'>
