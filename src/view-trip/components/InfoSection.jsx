@@ -140,8 +140,7 @@ const InfoSection = ({ trip }) => {
       day.plan.forEach((place, index) => {
         content += `${index + 1}. ${place.placeName || 'Unnamed Place'}\n`;
         content += `   Address: ${place.placeAddress || 'N/A'}\n`;
-        content += `   Best Time: ${place.bestTime || 'N/A'}\n`;
-        content += `   Time to Travel: ${place.timeToTravel || 'N/A'}\n`;
+        content += `   Time to Travel: ${place.timeTravel || 'N/A'}\n`;
         content += `   Ticket Pricing: ${place.ticketPricing || 'N/A'}\n`;
         content += `   Details: ${place.placeDetails || 'N/A'}\n\n`;
       });
